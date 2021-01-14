@@ -44,9 +44,9 @@ export default {
       .catch(errorHandler);
   },
 
-  getItems() {
+  getVideos() {
     return service
-      .get("/api/items")
+      .get("/api/video")
       .then((res) => res.data)
       .catch(errorHandler);
   },
