@@ -12,17 +12,6 @@ export default class FormVideo extends Component {
     category: "",
   };
 
-  //   componentDidMount() {
-  //     axios
-  //       .get(process.env.REACT_APP_BACKEND_URL + "/api/video")
-  //       .then((videoList) => {
-  //         console.log("helloooooo", videoList);
-  //         this.setState({
-  //           videos: videoList.data,
-  //         });
-  //       });
-  //   }
-
   componentDidMount() {
     const videoId = this.props.match.params.id;
     console.log("videoId", videoId);

@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 export default class VideoList extends Component {
   state = {
     videos: [],
-    filteredVideos: [],
+    // filteredVideos: [],
+    checkedSong: false,
+    checkedTales: false,
+    checkedEducation: false,
   };
 
   componentDidMount() {
@@ -34,38 +37,70 @@ export default class VideoList extends Component {
   };
 
   handleCheck = (event) => {
-    console.log(event.target);
+    console.log(event.target.checked);
+
     if (event.target.name === "song") {
       this.setState({
-        filteredVideos: this.state.videos.filter(
-          (video) => video.category === "song"
-        ),
+        checkedSong: event.target.checked,
       });
     } else if (event.target.name === "tales") {
       this.setState({
-        filteredVideos: this.state.videos.filter(
-          (video) => video.category === "tales"
-        ),
+        checkedTales: event.target.checked,
       });
     } else if (event.target.name === "education") {
       this.setState({
-        filteredVideos: this.state.videos.filter(
-          (video) => video.category === "education"
-        ),
-      });
-    } else {
-      this.setState({
-        filteredVideos: this.state.videos,
+        checkedEducation: event.target.checked,
       });
     }
+    console.log(this.state);
   };
 
   render() {
+    console.log(this.state.videos);
+    const filteredVideos = this.state.videos.filter((video) => {
+      let filteredB = false;
+      if (this.state.checkedSong && video.category === "song") {
+        filteredB = true;
+      }
+      if (this.state.checkedTales && video.category === "tales") {
+        filteredB = true;
+      }
+      if (this.state.checkedEducation && video.category === "education") {
+        filteredB = true;
+      }
+      if (
+        !this.state.checkedEducation &&
+        !this.state.checkedSong &&
+        !this.state.checkedTales
+      ) {
+        filteredB = true;
+      }
+      return filteredB;
+    });
+    // .filter((video) => {
+    //   if (this.state.checkedTales) {
+    //     return video.category === "tales";
+    //   } else {
+    //     return video;
+    //   }
+    // })
+    // .filter((video) => {
+    //   if (this.state.checkedEducation) {
+    //     return video.category === "education";
+    //   } else {
+    //     return video;
+    //   }
+    // }
+
     return (
       <div>
         <h1>Select a category</h1>
         <form>
-          <input type="checkbox" name="song" onClick={this.handleCheck}></input>
+          <input
+            type="checkbox"
+            name="song"
+            onChange={this.handleCheck}
+          ></input>
           <label htmlFor="">Song</label>
 
           <input
@@ -83,9 +118,9 @@ export default class VideoList extends Component {
           <label htmlFor="">Education</label>
         </form>
 
-        <h1>test video</h1>
+        {/* <h1>test video</h1>
         <div>
-          {this.state.filteredVideos.map((video) => (
+          {this.state.videos.map((video) => (
             <div key={video._id}>
               <iframe id="videoProject" src={video.videoUrl}></iframe>
               <h3>{video.title}</h3>
@@ -101,13 +136,13 @@ export default class VideoList extends Component {
               </button>
             </div>
           ))}
-        </div>
+        </div> */}
 
         <h1>OUR PROGRAMMES</h1>
         <Link to={`/videos/create`}>
           <button>Create a new video</button>
         </Link>
-        {this.state.videos.map((video) => {
+        {filteredVideos.map((video) => {
           return (
             <div key={video._id}>
               <iframe id="videoProject" src={video.videoUrl}></iframe>
