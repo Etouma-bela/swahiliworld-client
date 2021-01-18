@@ -51,9 +51,30 @@ const apiHandler = {
       .catch(errorHandler);
   },
 
+  getVideo(id) {
+    return service
+      .get("/api/video/" + id)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
   addVideo(data) {
     return service
       .post("api/video", data)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  updateVideo(videoId, data) {
+    return service
+      .patch(`api/video/${videoId}`, data)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  removeVideo(videoId) {
+    return service
+      .delete(`api/video/${videoId}`)
       .then((res) => res.data)
       .catch(errorHandler);
   },
