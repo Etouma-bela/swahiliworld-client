@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ApiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
+import LikeButton from "./LikeButton";
 
 export default class VideoCard extends Component {
   state = {
@@ -14,8 +15,7 @@ export default class VideoCard extends Component {
   componentDidMount() {
     const videoId = this.props.match.params.id;
     console.log("videoId", videoId);
-    apiHandler
-      .getVideo(videoId)
+    ApiHandler.getVideo(videoId)
       .then((apiResponse) => {
         // console.log(apiResponse);
         const video = apiResponse;
@@ -38,6 +38,10 @@ export default class VideoCard extends Component {
       <div>
         <h1>{this.state.title}</h1>
         <iframe id="oneVideo" src={this.state.videoUrl}></iframe>
+        <p>{this.state.category}</p> <br></br>
+        <p>{this.state.description}</p> <br></br>
+        <p>{this.state.vocabulary}</p>
+        <LikeButton />
       </div>
     );
   }

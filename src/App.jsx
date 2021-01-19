@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import VideoList from "./pages/VideoList";
 import FormVideo from "./components/Forms/FormVideo";
 import FormEditVideo from "./components/Forms/FormEditVideo";
+import VideoCard from "./components/VideoCard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/videos" component={VideoList} />
         <Route exact path="/videos/create" component={FormVideo} />
         <Route exact path="/videos/:id/edit" component={FormEditVideo} />
+        <Route exact path="/videos/:id/details" component={VideoCard} />
         <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
     </div>

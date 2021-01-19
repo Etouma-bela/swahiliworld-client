@@ -4,7 +4,20 @@ import { withUser } from "../components/Auth/withUser";
 
 const ProtectedRoute = ({ component: Component, context, ...rest }) => {
   if (context.isLoading) {
-    return null;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyItems: "center",
+          alignContent: "center",
+          height: "100vh",
+          width: "100vw",
+          // backgroundColor: "pink",
+        }}
+      >
+        <h1>Chargement ...</h1>
+      </div>
+    );
   } else if (context.isLoggedIn) {
     return <Route {...rest} render={(props) => <Component {...props} />} />;
   } else {

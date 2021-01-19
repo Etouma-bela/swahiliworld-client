@@ -1,11 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
+import { withUser } from "../components/Auth/withUser";
 
-const Profile = (props) => {
-  return (
-    <div>
-      <h1>Protected profile</h1>
-    </div>
-  );
-};
+class Profile extends Component {
+  render() {
+    const role = this.props.context.user.role;
+    console.log(this.props.context.user.role);
+    if (role === "user" || "admin") {
+      return (
+        <div>
+          {" "}
+          <h1>
+            {" "}
+            Hello {this.props.context.user.username} and welcome to Swahili
+            world!
+          </h1>{" "}
+        </div>
+      );
+    }
+  }
+}
 
-export default Profile;
+export default withUser(Profile);
+// export default withUser(Profile);

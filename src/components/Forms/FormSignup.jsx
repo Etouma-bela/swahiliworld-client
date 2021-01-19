@@ -8,8 +8,11 @@ class FormSignup extends Component {
   static contextType = UserContext;
 
   state = {
+    username: "",
     email: "",
     password: "",
+    country: "",
+    profilePic: "",
   };
 
   handleChange = (event) => {
@@ -39,22 +42,60 @@ class FormSignup extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          onChange={this.handleChange}
-          value={this.state.email}
-          type="email"
-          id="email"
-          name="email"
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          onChange={this.handleChange}
-          value={this.state.password}
-          type="password"
-          id="password"
-          name="password"
-        />
+        <div>
+          <label htmlFor="username">Username</label>
+          <input
+            onChange={this.handleChange}
+            value={this.state.username}
+            type="text"
+            id="username"
+            name="username"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            onChange={this.handleChange}
+            value={this.state.email}
+            type="email"
+            id="email"
+            name="email"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={this.handleChange}
+            value={this.state.password}
+            type="password"
+            id="password"
+            name="password"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="country">Country</label>
+          <input
+            onChange={this.handleChange}
+            value={this.state.country}
+            type="text"
+            id="country"
+            name="country"
+          />
+        </div>
+
+        {/* <div>
+          <label htmlFor="profilePic">picture</label>
+          <input
+            onChange={this.handleChange}
+            value={this.state.profilePic}
+            type="file"
+            id="picture"
+            name="profilePic"
+          />
+        </div> */}
         <button>Submit</button>
       </form>
     );

@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 // import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import ApiHandler from "../api/apiHandler";
+import { withUser } from "../components/Auth/withUser";
 
-export default class VideoList extends Component {
+class VideoList extends Component {
   state = {
     videos: [],
     // filteredVideos: [],
@@ -149,14 +151,23 @@ export default class VideoList extends Component {
               <h3>{video.title}</h3>
               <p>{video.category}</p> <br></br>
               <p>{video.description}</p>
-              <div>
-                <Link to={`/videos/${video._id}/edit`}>
-                  <button>Edit</button>
-                </Link>
-              </div>
-              <button onClick={() => this.handleDelete(video._id)}>
-                Delete
-              </button>
+              {this.props.context.user?.role === "admin" && (
+                <div>
+                  <Link to={`/videos/${video._id}/edit`}>
+                    <button>Edit</button>
+                  </Link>
+                </div>
+              )}
+              <Link to={`/videos/${video._id}/details`}>
+                <button>See details</button>
+              </Link>
+              {this.props.context.user?.role === "admin" && (
+                <div>
+                  <button onClick={() => this.handleDelete(video._id)}>
+                    Delete
+                  </button>
+                </div>
+              )}
             </div>
           );
         })}
@@ -164,3 +175,5 @@ export default class VideoList extends Component {
     );
   }
 }
+
+export default withUser(VideoList);
