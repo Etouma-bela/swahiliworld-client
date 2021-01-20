@@ -1,0 +1,106 @@
+.header {
+  background-color: #fbd05d;
+  padding: 16px;
+}
+
+.header__title {
+  color: #fafafa;
+  font-family: "Roboto", sans-serif;
+  font-size: 112px;
+  text-align: center;
+  line-height: 1.2;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.belly {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.belly__item {
+  width: calc(50% - 64px);
+  margin: 16px;
+  padding: 40px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.belly__item {
+  background: #a9c12d;
+}
+
+.belly__item:nth-of-type(3n + 1),
+.belly__item:nth-of-type(4n + 1) {
+  background: #ff6e6e;
+}
+
+.belly__item__img {
+  width: 152px;
+  height: auto;
+}
+
+.belly__item__text {
+  color: #fafafa;
+  margin: 0 4px;
+}
+
+.belly__item__tile {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  /* animation: pulse 3s ease-out; */
+  /* animation: "pulse" 1s infinite linear; */
+  opacity: 0.5;
+}
+
+.belly__item__subtitle {
+  font-family: "Nanum Pen Script", cursive;
+  font-weight: 100;
+  font-size: 24px;
+  margin: 8px 0;
+}
+
+.belly__item__p {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0;
+}
+
+@media screen and (max-width: 750px) {
+  .header__nav__linkCont {
+    display: none;
+  }
+  .header__nav__logo {
+    opacity: 1;
+  }
+  .belly {
+    flex-direction: column;
+  }
+  .belly__item {
+    width: calc(100% - 64px);
+  }
+  .belly__item:nth-of-type(odd) {
+    background: #ff6e6e;
+  }
+  .belly__item:nth-of-type(even) {
+    background: #a9c12d;
+  }
+}
+@media screen and (max-width: 450px) {
+  .belly__item {
+    flex-direction: column;
+  }
+  .belly__item__img {
+    width: 200px;
+    margin: 0 0 32px;
+  }
+}
