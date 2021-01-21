@@ -5,7 +5,8 @@
 
 .header__title {
   color: #fafafa;
-  font-family: "Roboto", sans-serif;
+  font-family: "Nanum Pen Script", cursive;
+  /* font-family: "Roboto", sans-serif; */
   font-size: 112px;
   text-align: center;
   line-height: 1.2;

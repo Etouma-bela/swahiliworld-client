@@ -4,6 +4,8 @@ import { UserContext } from "../Auth/UserContext";
 import apiHandler from "../../api/apiHandler";
 import { Redirect } from "react-router-dom";
 
+import "../../styles/Form.css";
+
 class FormSignup extends Component {
   static contextType = UserContext;
 
@@ -41,52 +43,57 @@ class FormSignup extends Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            onChange={this.handleChange}
-            value={this.state.username}
-            type="text"
-            id="username"
-            name="username"
-          />
-        </div>
+      <div className="signup-form">
+        <h1 className="title-form">Sign Up For Free.</h1>
+        <p className="paragraphe-form">Have Fun in Kiswahili!</p>
+        <form className="form" onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <div className="form-group-item">
+              <label htmlFor="username">Username</label>
+              <input
+                onChange={this.handleChange}
+                value={this.state.username}
+                type="text"
+                id="username"
+                name="username"
+              />
+            </div>
 
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            onChange={this.handleChange}
-            value={this.state.email}
-            type="email"
-            id="email"
-            name="email"
-          />
-        </div>
+            <div className="form-group-item">
+              <label htmlFor="email">Email</label>
+              <input
+                onChange={this.handleChange}
+                value={this.state.email}
+                type="email"
+                id="email"
+                name="email"
+              />
+            </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            onChange={this.handleChange}
-            value={this.state.password}
-            type="password"
-            id="password"
-            name="password"
-          />
-        </div>
+            <div className="form-group-item">
+              <label htmlFor="password">Password</label>
+              <input
+                onChange={this.handleChange}
+                value={this.state.password}
+                type="password"
+                id="password"
+                name="password"
+              />
+            </div>
 
-        <div>
-          <label htmlFor="country">Country</label>
-          <input
-            onChange={this.handleChange}
-            value={this.state.country}
-            type="text"
-            id="country"
-            name="country"
-          />
-        </div>
+            <div className="form-group-item">
+              <label htmlFor="country">Country</label>
+              <input
+                onChange={this.handleChange}
+                value={this.state.country}
+                type="text"
+                id="country"
+                name="country"
+              />
+            </div>
+          </div>
 
-        {/* <div>
+          {/* <div>
           <label htmlFor="profilePic">picture</label>
           <input
             onChange={this.handleChange}
@@ -96,8 +103,10 @@ class FormSignup extends Component {
             name="profilePic"
           />
         </div> */}
-        <button>Submit</button>
-      </form>
+
+          <button className="btn-form">Submit</button>
+        </form>
+      </div>
     );
   }
 }

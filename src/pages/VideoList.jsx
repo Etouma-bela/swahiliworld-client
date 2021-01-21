@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import ApiHandler from "../api/apiHandler";
 import { withUser } from "../components/Auth/withUser";
+import "../styles/VideoList.css";
 
 class VideoList extends Component {
   state = {
@@ -36,6 +37,13 @@ class VideoList extends Component {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  handlefavoriteVideo = (id) => {
+    console.log(id);
+    ApiHandler.addFavoriteVideo({ id }).then((apiResponse) => {
+      console.log("response api:", apiResponse);
+    });
   };
 
   handleCheck = (event) => {
@@ -96,14 +104,18 @@ class VideoList extends Component {
 
     return (
       <div>
-        <h1>Select a category</h1>
         <form>
+          {/* <h1>Select a category</h1> */}
+
           <input
+            className="input-category"
             type="checkbox"
             name="song"
             onChange={this.handleCheck}
           ></input>
-          <label htmlFor="">Song</label>
+          <label className="label-category" htmlFor="">
+            song
+          </label>
 
           <input
             type="checkbox"
@@ -139,38 +151,59 @@ class VideoList extends Component {
             </div>
           ))}
         </div> */}
+        <hr></hr>
 
-        <h1>OUR PROGRAMMES</h1>
-        <Link to={`/videos/create`}>
-          <button>Create a new video</button>
-        </Link>
-        {filteredVideos.map((video) => {
-          return (
-            <div key={video._id}>
-              <iframe id="videoProject" src={video.videoUrl}></iframe>
-              <h3>{video.title}</h3>
-              <p>{video.category}</p> <br></br>
-              <p>{video.description}</p>
-              {this.props.context.user?.role === "admin" && (
-                <div>
-                  <Link to={`/videos/${video._id}/edit`}>
-                    <button>Edit</button>
-                  </Link>
+        <h1 className="main-title">OUR PROGRAMMES</h1>
+
+        <div id="grid-container">
+          {filteredVideos.map((video) => {
+            return (
+              <div key={video._id} className="grid-item">
+                <div className="video-wrapper">
+                  <iframe id="videoProject" src={video.videoUrl}></iframe>
                 </div>
-              )}
-              <Link to={`/videos/${video._id}/details`}>
-                <button>See details</button>
-              </Link>
-              {this.props.context.user?.role === "admin" && (
-                <div>
-                  <button onClick={() => this.handleDelete(video._id)}>
-                    Delete
-                  </button>
-                </div>
-              )}
-            </div>
-          );
-        })}
+                <h3>{video.title}</h3>
+                {/* <p>{video.category}</p> <br></br>
+                <p>{video.description}</p> */}
+                {this.props.context.user?.role === "admin" && (
+                  <div>
+                    <Link to={`/videos/${video._id}/edit`}>
+                      <button>Edit</button>
+                    </Link>
+                  </div>
+                )}
+                <Link to={`/videos/${video._id}/details`}>
+                  <button>See details</button>
+                </Link>
+                {this.props.context.user?.role === "admin" && (
+                  <div>
+                    <button onClick={() => this.handleDelete(video._id)}>
+                      Delete
+                    </button>
+                  </div>
+                )}
+                {this.props.context.isLoggedIn && (
+                  <div>
+                    <Link to={`/profile`}>
+                      <button
+                        onClick={() => this.handlefavoriteVideo(video._id)}
+                      >
+                        Add to my account
+                      </button>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        {this.props.context.user?.role === "admin" && (
+          <div className="create-cat">
+            <Link to={`/videos/create`}>
+              <button>Create a new video</button>
+            </Link>
+          </div>
+        )}
       </div>
     );
   }

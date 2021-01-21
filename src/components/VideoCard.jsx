@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ApiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
 import LikeButton from "./LikeButton";
+import "../styles/VideoCard.css";
 
 export default class VideoCard extends Component {
   state = {
@@ -35,9 +36,11 @@ export default class VideoCard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="grid-item">
+        <div className="video-wrapper">
+          <iframe id="oneVideo" src={this.state.videoUrl}></iframe>
+        </div>
         <h1>{this.state.title}</h1>
-        <iframe id="oneVideo" src={this.state.videoUrl}></iframe>
         <p>{this.state.category}</p> <br></br>
         <p>{this.state.description}</p> <br></br>
         <p>{this.state.vocabulary}</p>

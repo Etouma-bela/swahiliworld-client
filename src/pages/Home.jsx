@@ -21,8 +21,8 @@ class Home extends React.Component {
               <Link to={`/videos`}>
                 <h2 className="belly__item__tile">Click here</h2>
               </Link>
-              <h3 className="belly__item__subtitle">For Fresh Content</h3>
-              <p className="belly__item__subtitle">in Kiswahili</p>
+              <h3 className="belly__item__subtitle">To Discover</h3>
+              <p className="belly__item__subtitle">Our Content</p>
             </div>
           </div>
 
@@ -33,8 +33,10 @@ class Home extends React.Component {
               className="belly__item__img"
             />
             <div className="belly__item__text">
-              <h2 className="belly__item__tile">Learn</h2>
-              <h3 className="belly__item__subtitle">More About us</h3>
+              <Link to={`/about`}>
+                <h2 className="belly__item__tile">Learn</h2>
+              </Link>
+              <h3 className="belly__item__subtitle">More About Us</h3>
               <p className="belly__item__subtitle">And Kiswahili </p>
             </div>
           </div>

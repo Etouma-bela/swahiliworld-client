@@ -78,6 +78,13 @@ const apiHandler = {
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
+  addFavoriteVideo(id) {
+    return service
+      .patch(`/api/users/me/videos`, id)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
 };
 
 export default apiHandler;
