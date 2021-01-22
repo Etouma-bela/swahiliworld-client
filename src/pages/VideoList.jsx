@@ -42,6 +42,7 @@ class VideoList extends Component {
   handlefavoriteVideo = (id) => {
     console.log(id);
     ApiHandler.addFavoriteVideo({ id }).then((apiResponse) => {
+      this.props.history.push("/profile");
       console.log("response api:", apiResponse);
     });
   };
@@ -186,13 +187,11 @@ class VideoList extends Component {
                 )}
                 {this.props.context.isLoggedIn && (
                   <div>
-                    <Link to={`/profile`}>
-                      <button
-                        onClick={() => this.handlefavoriteVideo(video._id)}
-                      >
-                        Add to my account
-                      </button>
-                    </Link>
+                    {/* <Link to={`/profile`}> */}
+                    <button onClick={() => this.handlefavoriteVideo(video._id)}>
+                      Add to my account
+                    </button>
+                    {/* </Link> */}
                   </div>
                 )}
               </div>

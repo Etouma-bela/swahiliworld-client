@@ -35,6 +35,7 @@ class Profile extends Component {
   render() {
     const role = this.props.context.user.role;
     const favoriteVideos = this.state.videos;
+    console.log("context:", this.props.context);
     console.log(favoriteVideos);
     console.log(this.props.context.user.role);
     if (role === "user" || "admin") {
@@ -58,10 +59,11 @@ class Profile extends Component {
                 <div key={video._id} className="grid-item">
                   <div className="video-wrapper">
                     <iframe id="videoProject" src={video.videoUrl}></iframe>
-                    <h3>{video.title}</h3>
-                    <p>{video.category}</p> <br></br>
-                    <p>{video.description}</p>
                   </div>
+                  <h3>{video.title}</h3>
+                  <Link to={`/videos/${video._id}/details`}>
+                    <button>See details</button>
+                  </Link>
                 </div>
               );
             })}
