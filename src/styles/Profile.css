@@ -22,3 +22,20 @@ button {
   transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
     background 150ms cubic-bezier(0, 0, 0.58, 1);
 }
+
+.profile-title {
+  text-align: center;
+  font-family: "Lobster", cursive;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: #ebae93;
+}
+
+.username {
+  color: #7d4830;
+}
+
+.profile-btn {
+  text-align: center;
+  margin-bottom: 25px;
+}

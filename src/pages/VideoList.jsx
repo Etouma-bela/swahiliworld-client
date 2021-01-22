@@ -104,33 +104,35 @@ class VideoList extends Component {
 
     return (
       <div>
-        <form>
-          {/* <h1>Select a category</h1> */}
+        <div className="category-type">
+          <form className="cat-point">
+            {/* <h1>Select a category</h1> */}
 
-          <input
-            className="input-category"
-            type="checkbox"
-            name="song"
-            onChange={this.handleCheck}
-          ></input>
-          <label className="label-category" htmlFor="">
-            song
-          </label>
+            <input
+              className="input-category"
+              type="checkbox"
+              name="song"
+              onChange={this.handleCheck}
+            ></input>
+            <label className="label-category" htmlFor="">
+              song
+            </label>
 
-          <input
-            type="checkbox"
-            name="tales"
-            onChange={this.handleCheck}
-          ></input>
-          <label htmlFor="">Tales</label>
+            <input
+              type="checkbox"
+              name="tales"
+              onChange={this.handleCheck}
+            ></input>
+            <label htmlFor="">Tales</label>
 
-          <input
-            type="checkbox"
-            name="education"
-            onChange={this.handleCheck}
-          ></input>
-          <label htmlFor="">Education</label>
-        </form>
+            <input
+              type="checkbox"
+              name="education"
+              onChange={this.handleCheck}
+            ></input>
+            <label htmlFor="">Education</label>
+          </form>
+        </div>
 
         {/* <h1>test video</h1>
         <div>

@@ -28,7 +28,7 @@ class Profile extends Component {
       .then((videoList) => {
         console.log("helloooooo", videoList);
         this.setState({
-          videos: videoList.data[0].favoriteVideos,
+          videos: videoList.data.favoriteVideos,
         });
       });
   }
@@ -41,26 +41,36 @@ class Profile extends Component {
       return (
         <div>
           {" "}
-          <h1>
+          <h1 className="profile-title">
             {" "}
-            Hello {this.props.context.user.username} and welcome to Swahili
-            world!
+            Hello{" "}
+            <span className="username">
+              {" "}
+              {this.props.context.user.username}{" "}
+            </span>{" "}
+            and welcome to Swahili world!
           </h1>{" "}
           <hr></hr>
-          <h1>My Favorite Videos</h1>
-          {favoriteVideos.map((video) => {
-            return (
-              <div key={video._id}>
-                <iframe id="videoProject" src={video.videoUrl}></iframe>
-                <h3>{video.title}</h3>
-                <p>{video.category}</p> <br></br>
-                <p>{video.description}</p>
-              </div>
-            );
-          })}
-          <Link to={`/videos`}>
-            <button className="learn-more">Watch Our Videos</button>
-          </Link>
+          <h1 className="main-title">My Favorite Videos</h1>
+          <div id="grid-container">
+            {favoriteVideos.map((video) => {
+              return (
+                <div key={video._id} className="grid-item">
+                  <div className="video-wrapper">
+                    <iframe id="videoProject" src={video.videoUrl}></iframe>
+                    <h3>{video.title}</h3>
+                    <p>{video.category}</p> <br></br>
+                    <p>{video.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="profile-btn">
+            <Link to={`/videos`}>
+              <button className="learn-more">Watch Our Videos</button>
+            </Link>
+          </div>
         </div>
       );
     }

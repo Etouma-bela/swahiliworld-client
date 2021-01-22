@@ -9,7 +9,7 @@
 }
 
 .grid-item {
-  background-image: linear-gradient(to top left, #ff6e6e, #ffa1a1);
+  background-image: linear-gradient(to top left, #ebae93, #f5d6c9);
   font-family: "Lobster", cursive;
   text-align: center;
   font-size: 1em;
@@ -39,7 +39,7 @@
   font-family: "Lobster", cursive;
   padding: 10px;
   margin: 30px auto;
-  background-image: linear-gradient(to top left, #ff6e6e, #ffa1a1);
+  background-image: linear-gradient(to top left, #ebae93, #f5d6c9);
   color: rgb(250, 250, 250);
   font-weight: bold;
   font-size: 1em;
@@ -50,3 +50,13 @@
   text-align: center;
   margin-bottom: 30px;
 }
+
+.category-type {
+  text-align: center;
+  margin: 10px;
+}
+
+/* .cat-point {
+  display: flex;
+  flex-direction: row;
+} */
